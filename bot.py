@@ -7,7 +7,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 #--------------------------------------
-#           Code Fonctionnel
+#           TBot V1.0
 #--------------------------------------
 # Configuration du navigateur
 options = Options()
@@ -16,7 +16,7 @@ driver = webdriver.Chrome(options=options)
 
 # Étape 1 : Accéder au site
 print("[INFO] Accès au site web...")
-driver.get("http://localhost:8501/")
+driver.get("http://yourdomain.com/")
 
 time.sleep(3)
 # Étape 2 : Attendre le chargement du menu
@@ -34,23 +34,26 @@ print("[DEBUG] Formulaire détecté :", form.is_displayed())
 # Étape 4 : Remplissage et soumission
 print("[INFO] Remplissage du formulaire...")
 
-# Locate the fields by their name attribute
+# Étape 5 : Localiser les champs de saisie
 name_field = driver.find_element(By.NAME, "name")
 email_field = driver.find_element(By.NAME, "email")
 message_field = driver.find_element(By.NAME, "message")
 
-# Fill in the fields
+# Étape 6 : Remplir les champs
 name_field.send_keys("Your Name")
 email_field.send_keys("your.email@example.com")
 message_field.send_keys("Your message here")
 
+#Étape 7 : Envoyer le formulaire
 submit_button = driver.find_element(By.XPATH, "//button[contains(text(), 'Envoyer')]")
 driver.execute_script("arguments[0].scrollIntoView(true);", submit_button)
 time.sleep(1)
 driver.execute_script("arguments[0].click();", submit_button)
+
+#Contrôle de la soumission du formulaire
 print("[INFO] Formulaire soumis.")
 
-
+#Étape 8 : Fin du programme
 print("[INFO] Successfull")
 time.sleep(10)
 driver.quit()
